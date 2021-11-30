@@ -1,0 +1,50 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Breed {
+  count: Int!
+  id: String!
+  name: String!
+  pets: [Pet!]
+  specie: Specie
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Owner {
+  birthdate: DateTime!
+  count: Int!
+  id: String!
+  name: String!
+  pets: [Pet!]
+}
+
+type Pet {
+  breed: Breed
+  count: Int!
+  id: String!
+  name: String!
+  owner: Owner
+}
+
+type Query {
+  breed(id: String!): Breed
+  breeds: [Breed!]
+  owner(id: String!): Owner
+  owners: [Owner!]
+  pet(id: String!): Pet
+  pets: [Pet!]
+  specie(id: String!): Specie
+  species: [Specie!]
+}
+
+type Specie {
+  breeds: [Breed!]
+  count: Int!
+  id: String!
+  name: String!
+}
