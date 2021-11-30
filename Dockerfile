@@ -10,6 +10,7 @@ RUN npm run build
 FROM node:lts-alpine as Runtime
 WORKDIR /opt/app
 RUN npm i -g npm
+RUN npm i prisma ts-node
 COPY package*.json .
 COPY prisma prisma
 RUN npm ci --only=production
