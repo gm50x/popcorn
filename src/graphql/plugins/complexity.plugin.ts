@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { GraphQLSchemaHost, Plugin } from '@nestjs/graphql';
 import {
   ApolloServerPlugin,
@@ -32,11 +33,10 @@ export class ComplexityPlugin implements ApolloServerPlugin {
           ],
         });
         if (complexity >= maximumAllowedComplexity) {
-          throw new GraphQLError(
-            `Query is too complex: ${complexity}. Maximum allowed complexity: ${maximumAllowedComplexity}`,
-          );
+          const message = `Query is too complex: ${complexity}. Maximum allowed complexity: ${maximumAllowedComplexity}`;
+          Logger.error(message);
+          throw new GraphQLError(message);
         }
-        console.log('Query Complexity:', complexity);
       },
     };
   }

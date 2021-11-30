@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
 
 import {
   PrismaService,
@@ -14,8 +15,8 @@ import {
   OwnersResolver,
   SpeciesResolver,
   ComplexityPlugin,
+  formatError,
 } from './graphql';
-import { GraphQLModule } from '@nestjs/graphql';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { GraphQLModule } from '@nestjs/graphql';
       playground: true,
       sortSchema: true,
       autoSchemaFile: 'schema.graphql',
+      formatError,
     }),
   ],
   providers: [
